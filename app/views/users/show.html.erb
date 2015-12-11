@@ -1,0 +1,7 @@
+<h3><%= "@#{@user.username}" %></h3>
+
+<% @user.statuses.each do |status| %>
+  <ul>
+    <li><%= status.body %></li>
+  </ul>
+<% end %>

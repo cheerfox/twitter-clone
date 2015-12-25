@@ -1,0 +1,8 @@
+<!-- This is a generic partial that display all the errors if ActiveRecord Object -->
+<% if obj.errors.any? %>
+  <ul>
+    <% obj.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

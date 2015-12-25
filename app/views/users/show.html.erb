@@ -1,4 +1,4 @@
-<h3><%= "@#{@user.username}" %></h3>
+<h3><%= link_to "@#{@user.username}", user_path(@user.username) %></h3>
 
 <% @user.statuses.each do |status| %>
   <ul>

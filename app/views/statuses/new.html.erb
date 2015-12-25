@@ -1,0 +1,7 @@
+<%= render 'shared/errors', obj: @status %>
+<%= render 'shared/header', header: 'Create a New Status' %>
+<%= form_for @status do |f| %>
+  <%= f.label :body %>
+  <%= f.text_area :body %><br>
+  <%= f.submit "Create Status" %>
+<% end %>

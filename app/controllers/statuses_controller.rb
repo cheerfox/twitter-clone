@@ -11,7 +11,7 @@ class StatusesController < ApplicationController
       flash[:notice] = "Successfully Create a Status!!"
       redirect_to user_path(user.username)
     else 
-      render 'new'
+      render :new
     end
         
   end

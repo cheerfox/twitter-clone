@@ -2,6 +2,6 @@
 
 <% @user.statuses.each do |status| %>
   <ul>
-    <li><%= status.body %></li>
+    <li><%= status.body %> on <%= status.created_at %></li>
   </ul>
 <% end %>

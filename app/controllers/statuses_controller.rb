@@ -5,7 +5,7 @@ class StatusesController < ApplicationController
 
   def create
     @status = Status.new(status_params)
-    user = User.first
+    user = current_user
     @status.creator = user  ##Update after Authentiction
     if @status.save
       flash[:notice] = "Successfully Create a Status!!"

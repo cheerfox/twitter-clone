@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_user, only: [:follow]
+
   def index
     @users = User.all
   end
@@ -20,6 +22,29 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
+  end
+
+  def follow
+    leader = User.find(params[:id])
+    if leader
+      current_user.following_users << leader
+      flash[:notice] = "You have followed #{leader.username}!!"
+      redirect_to user_path(leader.username)
+    else
+      wrong_path
+    end
+  end
+
+  def unfollow
+    user = User.find(params[:id])
+    if user
+      relationship = current_user.following_relationships.find_by(follower_id: current_user.id, leader_id: user.id)
+      relationship.destroy
+      flash[:notice] ="You are no longer follow #{user.username}"
+      redirect_to :root
+    else
+      wrong_path
+    end
   end
 
   private

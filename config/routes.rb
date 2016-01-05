@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy", as: "logout"
 
+
   resources :statuses, only: [:new, :create]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    member do
+      get 'follow'
+      get 'unfollow'
+    end
+  end
   get '/:username', to: "users#show", as: "user"
 end

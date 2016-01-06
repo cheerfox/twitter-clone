@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user, only: [:follow]
+  before_action :require_user, only: [:follow, :unfollow, :timeline]
 
   def index
     @users = User.all
@@ -45,6 +45,18 @@ class UsersController < ApplicationController
     else
       wrong_path
     end
+  end
+
+  def timeline
+    @statuses = [ ]
+    current_user.following_users.each do |user|
+      @statuses << user.statuses
+    end
+    @statuses.flatten!   ##todo : sort by created time
+  end
+
+  def mentions
+    
   end
 
   private

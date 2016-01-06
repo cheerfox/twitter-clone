@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = "You've logged in successfully!"
-      redirect_to user_path(user.username)
-      #login seccess
+      redirect_to timeline_path 
+      #login success
     else
       flash.now[:error] = "Something goes wrong with your usename or password"
       render :new

@@ -3,7 +3,7 @@
   <%= link_to "logout", logout_path %> |
   <%= link_to "New Status", new_status_path %> |
   <%= link_to "Timeline", timeline_path %> |
-  <%= link_to "Mentions", mentions_path %>
+  <%= link_to "Mentions(#{unread_mention_amount_for_current_user})", mentions_path %>
 <% else %>
   <%= link_to "Register", new_user_path %> |
   <%= link_to "login", login_path %>

@@ -16,4 +16,11 @@ class User < ActiveRecord::Base
   def unread_mention_amount
     self.mentions.where(viewed_at: nil).size
   end
+
+  def mark_mentions_viewed!
+    self.mentions.each do |mention|
+      mention.mark_viewed!
+    end
+  end
+
 end

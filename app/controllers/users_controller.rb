@@ -56,9 +56,7 @@ class UsersController < ApplicationController
   end
 
   def mentions
-    current_user.mentions.each do |mention|
-      mention.update(viewed_at: DateTime.now)
-    end
+    current_user.mark_mentions_viewed!
   end
 
   private

@@ -1,9 +1,13 @@
 <%= render 'shared/errors', obj: @status %>
 <%= render 'shared/header', header: 'Create a New Status' %>
 <% if logged_in? %>
-  <%= form_for @status do |f| %>
-    <%= f.label :body %>
-    <%= f.text_area :body %><br>
-    <%= f.submit "Create Status" %>
-  <% end %>
+  <div class="col-sm-6">
+    <%= form_for @status do |f| %>
+      <div class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <%= f.submit "Create Status" ,class: "btn btn-success"%>
+    <% end %>
+  </div>
 <% end %>

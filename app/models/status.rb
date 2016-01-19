@@ -5,6 +5,8 @@ class Status < ActiveRecord::Base
 
   after_save :extract_mentions
 
+
+
   def extract_mentions
     mentions = self.body.scan(/@(\w*)/).flatten
     mentions.each do |mention|
@@ -13,6 +15,10 @@ class Status < ActiveRecord::Base
         Mention.create(user_id: user.id, status_id: self.id)
       end
     end    
+  end
+
+  def self.get_status_of_hashtag(hashtag)
+    where("body LIKE '%##{hashtag}%'")
   end
 
 end

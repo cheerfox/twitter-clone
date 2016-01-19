@@ -1,7 +1,16 @@
 <%= render 'shared/header', header: 'Timeline' %>
-
-<ul>
+<div class="col-sm-6">
   <% @statuses.each do |status| %>
-    <li><%= status.body %> by <%= status.creator.username %> at <%= status.created_at %></li>
-  <% end %>
-</ul>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <%= status.creator.username %>
+      </div>
+      <div class="panel-body">
+        <%= generate_links(status.body) %>
+      </div>
+      <div class="panel-footer">
+        by <%= status.creator.username %> at <%= status.created_at %>
+      </div>
+    </div>
+  <% end %>  
+</div>

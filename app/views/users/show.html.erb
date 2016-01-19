@@ -10,6 +10,6 @@
 
 <% @user.statuses.each do |status| %>
   <ul>
-    <li><%= status.body %> on <%= status.created_at %></li>
+    <li><%= generate_links(status.body) %> on <%= status.created_at %></li>
   </ul>
 <% end %>

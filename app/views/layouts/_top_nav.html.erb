@@ -1,10 +1,14 @@
-<%= link_to 'Home', root_path %> |
-<% if logged_in? %>
-  <%= link_to "logout", logout_path %> |
-  <%= link_to "New Status", new_status_path %> |
-  <%= link_to "Timeline", timeline_path %> |
-  <%= link_to "Mentions(#{unread_mention_amount_for_current_user})", mentions_path %>
-<% else %>
-  <%= link_to "Register", new_user_path %> |
-  <%= link_to "login", login_path %>
-<% end %>
+<ul class="nav nav-pills">
+  <li role="presentation"> <%= link_to 'Home', root_path %></li>
+  <% if logged_in? %>
+    <li role="presentation"><%= link_to "logout", logout_path %></li>
+    <li role="presentation"><%= link_to "New Status", new_status_path %></li>
+    <li role="presentation"><%= link_to "Timeline", timeline_path %></li>
+    <li role="presentation">
+      <%= link_to "Mentions(#{unread_mention_amount_for_current_user})", mentions_path %>
+    </li>   
+  <% else %>
+    <li role="presentation"><%= link_to "Register", new_user_path %></li>
+    <li role="presentation"><%= link_to "login", login_path %></li>
+  <% end %>
+</ul>

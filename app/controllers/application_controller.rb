@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :unread_mention_amount_for_current_user
+  helper_method :current_user, :logged_in?, :unread_mention_amount_for_current_user, :generate_links
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -27,5 +27,18 @@ class ApplicationController < ActionController::Base
 
   def unread_mention_amount_for_current_user
     current_user.unread_mention_amount
+  end
+
+  def generate_links(status_body)
+    status_body = generate_hashtag_links(status_body)
+    generate_mentions_links(status_body)
+  end
+
+  def generate_hashtag_links(status_body)
+    status_body.gsub(/#(\w+)/, "<a href=/hashtags/\\1>#\\1</a>").html_safe    
+  end
+
+  def generate_mentions_links(status_body)
+    status_body.gsub(/@(\w+)/, "<a href=/\\1>@\\1</a>").html_safe
   end
 end

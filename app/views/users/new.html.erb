@@ -1,11 +1,20 @@
 <%= render 'shared/errors', obj: @user %>
 <%= render 'shared/header', header: 'Regiser' %>
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
-  <%= f.submit "Register" %>
-<% end %>
+<div class="col-sm-4">
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: "form-control" %>      
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>     
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <%= f.submit "Register", class: "btn btn-info" %>
+  <% end %>
+
+</div>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/timeline', to: "users#timeline"
   get '/mentions', to: "users#mentions"
 
-
+  resources :hashtags, only: [:show]
   resources :statuses, only: [:new, :create]
   resources :users, only: [:new, :create] do
     member do

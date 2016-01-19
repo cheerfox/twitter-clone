@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def generate_hashtag_links(status_body)
-    status_body.gsub(/#(\w+)/, "<a href=/hashtags/\\1>#\\1</a>").html_safe    
+    status_body.gsub(/#(\w+)/, "<a href=/hashtags/\\1>#\\1</a>").html_safe
   end
 
   def generate_mentions_links(status_body)

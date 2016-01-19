@@ -2,7 +2,7 @@
 <ul>
   <% current_user.mentions.each do |mention| %>
     <li>
-      <%= mention.status.body %> by <%= mention.status.creator.username %> at <%= mention.status.created_at %>
+      <%= generate_links(mention.status.body) %> by <%= mention.status.creator.username %> at <%= mention.status.created_at %>
     </li>
   <% end %>
 </ul>

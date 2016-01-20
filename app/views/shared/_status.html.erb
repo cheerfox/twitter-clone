@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-6">
+    <% statuses.each do |status| %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <%= status.creator.username %>
+        </div>
+        <div class="panel-body">
+          <%= generate_links(status.body) %>
+        </div>
+        <div class="panel-footer">
+          by <%= status.creator.username %> at <%= status.created_at %>
+        </div>
+      </div>
+    <% end %>  
+  </div>  
+</div>

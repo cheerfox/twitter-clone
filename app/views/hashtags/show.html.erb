@@ -1,6 +1,3 @@
 <%= render 'shared/header', header: "All the Status with ##{params[:id]}" %>
-<ul>
-  <% @statuses.each do |status| %>
-    <li><%= generate_links(status.body) %> by <%= status.creator.username %> at <%= status.created_at %></li>
-  <% end %>  
-</ul>
+<%= render 'shared/status', statuses: @statuses %>
+

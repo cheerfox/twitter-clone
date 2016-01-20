@@ -1,15 +1,13 @@
 <h3><%= link_to "@#{@user.username}", user_path(@user.username) %></h3>
+<div class="follow_unfollow_button">
+  <% if logged_in? && (current_user != @user) %>
+    <% if !current_user.following_users.include?(@user) %>
+      <%= link_to '+ Follow', follow_user_path(@user), method: 'post', class: "btn btn-success" %>
+    <% else %>
+      <%= link_to '-unfollow', unfollow_user_path(@user), method: 'post', class: "btn btn-warning" %>    
+    <% end %>
+  <% end %> 
+</div>
 
-<% if logged_in? && (current_user != @user) %>
-  <% if !current_user.following_users.include?(@user) %>
-    <%= link_to '+ Follow', follow_user_path(@user), method: 'post' %>
-  <% else %>
-    <%= link_to '-unfollow', unfollow_user_path(@user), method: 'post' %>    
-  <% end %>
-<% end %> 
 
-<% @user.statuses.each do |status| %>
-  <ul>
-    <li><%= generate_links(status.body) %> on <%= status.created_at %></li>
-  </ul>
-<% end %>
+<%= render 'shared/status', statuses: @user.statuses %>

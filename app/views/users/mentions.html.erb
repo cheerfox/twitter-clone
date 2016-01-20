@@ -1,9 +1,4 @@
 <%= render 'shared/header', header: 'Mentions' %>
-<ul>
-  <% current_user.mentions.each do |mention| %>
-    <li>
-      <%= generate_links(mention.status.body) %> by <%= mention.status.creator.username %> at <%= mention.status.created_at %>
-    </li>
-  <% end %>
-</ul>
+<%= render 'shared/status', statuses: @statuses %>
+
 

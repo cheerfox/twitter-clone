@@ -41,4 +41,12 @@ class ApplicationController < ActionController::Base
   def generate_mentions_links(status_body)
     status_body.gsub(/@(\w+)/, "<a href=/\\1>@\\1</a>").html_safe
   end
+
+  def extract_statuses_from_mentions
+    statuses = []
+    current_user.mentions.each do |mention|
+      statuses << mention.status
+    end
+    statuses
+  end
 end

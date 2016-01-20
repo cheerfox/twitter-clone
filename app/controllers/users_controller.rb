@@ -57,6 +57,7 @@ class UsersController < ApplicationController
 
   def mentions
     current_user.mark_mentions_viewed!
+    @statuses = extract_statuses_from_mentions
   end
 
   private

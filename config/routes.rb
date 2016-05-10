@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: "sessions#destroy", as: "logout"
   get '/timeline', to: "users#timeline"
   get '/mentions', to: "users#mentions"
+  get 'followerslist', to: "users#followerslist"
 
   resources :hashtags, only: [:show]
   resources :statuses, only: [:new, :create]

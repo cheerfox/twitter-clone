@@ -60,6 +60,13 @@ class UsersController < ApplicationController
     @statuses = extract_statuses_from_mentions
   end
 
+  def followerslist
+      @followers = []
+      current_user.follower_users.each do |follower|
+          @followers << follower
+      end
+  end
+
   private
 
   def user_params
